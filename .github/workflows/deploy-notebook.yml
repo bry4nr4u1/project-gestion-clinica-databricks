@@ -188,7 +188,7 @@ jobs:
           "format": "MULTI_TASK",
           "tasks": [
             {
-              "task_key": "Eliminar ambiente",
+              "task_key": "Eliminar-ambiente",
               "description": "Ejecuta notebook -> eliminar-ambiente",
               "notebook_task": {
                 "notebook_path": "/prod/etl/eliminar-ambiente",
@@ -204,7 +204,7 @@ jobs:
               "max_retries": 2
             },
             {
-              "task_key": "Preparacion Ambiente",
+              "task_key": "Preparacion-Ambiente",
               "description": "Ejecuta notebook -> preparacion-ambiente",
               "notebook_task": {
                 "notebook_path": "/prod/etl/preparacion-ambiente",
@@ -222,12 +222,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Eliminar ambiente"
+                  "task_key": "Eliminar-Ambiente"
                 }
               ]              
             },
             {
-              "task_key": "Extraer data cirugia",
+              "task_key": "Extraer-data-cirugia",
               "description": "Ejecuta notebook -> extraer-data-cirugia",
               "notebook_task": {
                 "notebook_path": "/prod/etl/extraer-data-cirugia",
@@ -246,12 +246,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion Ambiente"
+                  "task_key": "Preparacion-Ambiente"
                 }
               ]
             },
             {
-              "task_key": "Extraer data consultas medicas",
+              "task_key": "Extraer-data-consultas-medicas",
               "description": "Ejecuta notebook -> extraer-data-consultas-medicas",
               "notebook_task": {
                 "notebook_path": "/prod/etl/extraer-data-consultas-medicas",
@@ -270,12 +270,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion Ambiente"
+                  "task_key": "Preparacion-Ambiente"
                 }
               ]
             },
             {
-              "task_key": "Extraer data medicamento",
+              "task_key": "Extraer-data-medicamento",
               "description": "Ejecuta notebook -> extraer-data-medicamento",
               "notebook_task": {
                 "notebook_path": "/prod/etl/extraer-data-medicamento",
@@ -294,12 +294,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion Ambiente"
+                  "task_key": "Preparacion-Ambiente"
                 }
               ]
             },
             {
-              "task_key": "Extraer data medico",
+              "task_key": "Extraer-data-medico",
               "description": "Ejecuta notebook -> extraer-data-medico",
               "notebook_task": {
                 "notebook_path": "/prod/etl/extraer-data-medico",
@@ -318,12 +318,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion Ambiente"
+                  "task_key": "Preparacion-Ambiente"
                 }
               ]
             },
             {
-              "task_key": "Extraer data paciente",
+              "task_key": "Extraer-data-paciente",
               "description": "Ejecuta notebook -> extraer-data-paciente",
               "notebook_task": {
                 "notebook_path": "/prod/etl/extraer-data-paciente",
@@ -342,12 +342,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion Ambiente"
+                  "task_key": "Preparacion-Ambiente"
                 }
               ]
             },
             {
-              "task_key": "Extraer data historial pacientes",
+              "task_key": "Extraer-data-historial-pacientes",
               "description": "Ejecuta notebook -> extraer-data-historial-pacientes",
               "notebook_task": {
                 "notebook_path": "/prod/etl/extraer-data-historial-pacientes",
@@ -368,12 +368,12 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Preparacion Ambiente"
+                  "task_key": "Preparacion-Ambiente"
                 }
               ]
             },   
             {
-              "task_key": "Transformar datos clinica",
+              "task_key": "Transformar-datos-clinica",
               "description": "Ejecuta notebook -> transformar-data-clinica",
               "notebook_task": {
                 "notebook_path": "/prod/etl/transformar-data-clinica",
@@ -402,27 +402,27 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Extraer data cirugia"
+                  "task_key": "Extraer-data-cirugia"
                 },
                 {
-                  "task_key": "Extraer data consultas medicas"
+                  "task_key": "Extraer-data-consultas-medicas"
                 },
                 {
-                  "task_key": "Extraer data medicamento"
+                  "task_key": "Extraer-data-medicamento"
                 },
                 {
-                  "task_key": "Extraer data medico"
+                  "task_key": "Extraer-data-medico"
                 },
                 {
-                  "task_key": "Extraer data paciente"
+                  "task_key": "Extraer-data-paciente"
                 },
                 {
-                  "task_key": "Extraer data historial pacientes"
+                  "task_key": "Extraer-data-historial-pacientes"
                 }
               ]
             },
             {
-              "task_key": "Cargar datos clinica",
+              "task_key": "Cargar-datos-clinica",
               "description": "Ejecuta notebook -> cargar-data-clinica",
               "notebook_task": {
                 "notebook_path": "/prod/etl/cargar-data-clinica",
@@ -449,7 +449,7 @@ jobs:
               "max_retries": 2,
               "depends_on": [
                 {
-                  "task_key": "Transformar datos clinica"
+                  "task_key": "Transformar-datos-clinica"
                 }
               ]
             }            
