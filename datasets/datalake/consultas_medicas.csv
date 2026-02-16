@@ -1,0 +1,41 @@
+codigo_consulta,id_paciente,fecha_consulta,id_medico,especialidad,motivo,diagnostico,costo_consulta,estado
+CONS001,1,2025-09-15,MED001,Cardiología,Dolor en el pecho,Hipertensión Arterial,150000,Completada
+CONS002,2,2025-09-18,MED002,Endocrinología,Revisión periódica,Diabetes Mellitus tipo 2,120000,Completada
+CONS003,3,2025-09-20,MED003,Gastroenterología,Problemas digestivos,Gastritis Crónica,100000,Completada
+CONS004,4,2025-09-22,MED006,Ginecología,Chequeo anual,Normal,110000,Completada
+CONS005,5,2025-10-01,MED001,Cardiología,Mareos y palpitaciones,Arritmia Cardíaca,160000,Completada
+CONS006,6,2025-10-03,MED002,Endocrinología,Control de medicamentos,Hipotiroidismo,130000,Completada
+CONS007,7,2025-10-05,MED009,Neurología,Dolores de cabeza frecuentes,Migraña,140000,Completada
+CONS008,8,2025-10-08,MED004,Traumatología,Dolor en rodilla,Artrosis Grado II,125000,Completada
+CONS009,9,2025-10-10,MED014,Neumología,Tos persistente,Bronquitis Crónica,105000,Completada
+CONS010,10,2025-10-12,MED001,Cardiología,Control post-evento,Enfermedad Coronaria,170000,Completada
+CONS011,11,2025-10-15,MED010,Psiquiatría,Ansiedad y depresión,Trastorno de Ansiedad,120000,Completada
+CONS012,12,2025-10-18,MED006,Ginecología,Dolor abdominal,Síndrome del Ovario Poliquístico,135000,Completada
+CONS013,13,2025-10-20,MED003,Gastroenterología,Reflujo ácido,Enfermedad por Reflujo Gastroesofágico,100000,Completada
+CONS014,14,2025-10-22,MED002,Endocrinología,Fatiga constante,Deficiencia de Vitamina B12,115000,Completada
+CONS015,15,2025-10-25,MED001,Cardiología,Control de presión,Hipertensión Controlada,140000,Completada
+CONS016,16,2025-10-28,MED013,Oftalmología,Visión borrosa,Miopía Progresiva,95000,Completada
+CONS017,17,2025-11-01,MED004,Traumatología,Dolor de espalda,Hernia Discal L4-L5,145000,Completada
+CONS018,18,2025-11-03,MED007,Oncología,Lunares sospechosos,Evaluación por Melanoma,180000,Completada
+CONS019,19,2025-11-05,MED008,Infectología,Infección recurrente,Infección Urinaria Recurrente,125000,Completada
+CONS020,20,2025-11-08,MED014,Neumología,Dificultad para respirar,Asma Moderado,110000,Completada
+CONS021,21,2025-11-10,MED011,Urología,Problemas urinarios,Hiperplasia Prostática Benigna,140000,Completada
+CONS022,22,2025-11-12,MED006,Ginecología,Triglicéridos elevados,Normal,110000,Completada
+CONS023,23,2025-11-15,MED009,Neurología,Hormigueo en extremidades,Polineuropatía Diabética,135000,Completada
+CONS024,24,2025-11-18,MED001,Cardiología,Evaluación pre-quirúrgica,Apto para cirugía,130000,Completada
+CONS025,25,2025-11-20,MED003,Gastroenterología,Úlcera sangrante,Úlcera Gástrica,150000,Completada
+CONS026,26,2025-11-22,MED002,Endocrinología,Hipoglucemia,Diabetes Insulino Dependiente,140000,Completada
+CONS027,27,2025-11-25,MED017,Otorrinolaringología,Otitis recurrente,Otitis Media Crónica,105000,Completada
+CONS028,28,2025-11-28,MED018,Dermatología,Erupciones alérgicas,Dermatitis Atópica,115000,Completada
+CONS029,29,2025-12-01,MED019,Reumatología,Articulaciones inflamadas,Artritis Reumatoide,160000,Completada
+CONS030,30,2025-12-03,MED010,Psiquiatría,Falta de concentración,TDAH,125000,Completada
+CONS031,31,2025-12-05,MED012,Cirugía General,Masa abdominal,Evaluación pre-quirúrgica,155000,Pendiente
+CONS032,32,2025-12-08,MED006,Ginecología,Sangrado anormal,Mioma Uterino,145000,Completada
+CONS033,33,2025-12-10,MED001,Cardiología,Cansancio extremo,Insuficiencia Cardíaca,175000,Completada
+CONS034,34,2025-12-12,MED004,Traumatología,Esguince severo,Rotura de Ligamento,150000,Completada
+CONS035,35,2025-12-15,MED014,Neumología,Neumonía,Neumonía Bacteriana,160000,Completada
+CONS036,36,2025-12-18,MED002,Endocrinología,Obesidad extrema,Sindrome Metabólico,135000,Completada
+CONS037,37,2025-12-20,MED008,Infectología,Hepatitis,Hepatitis C,190000,Completada
+CONS038,38,2025-12-22,MED011,Urología,Cálculos renales,Litiasis Renal,155000,Completada
+CONS039,39,2025-12-25,MED016,Pediatría,Control de crecimiento,Desarrollo Normal,100000,Completada
+CONS040,40,2026-01-02,MED020,Alergología,Reacciones alérgicas,Alergia Estacional,120000,Completada

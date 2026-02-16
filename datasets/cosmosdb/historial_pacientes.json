@@ -1,0 +1,1306 @@
+[
+  {
+    "identificacion": 1,
+    "nombre": "Juan García",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-09-15"
+      },
+      {
+        "codigo": "FAR003",
+        "fecha": "2025-09-17"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 2,
+    "nombre": "María Rodríguez",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2025-09-16"
+      },
+      {
+        "codigo": "FAR009",
+        "fecha": "2025-09-18"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR006",
+        "fecha": "2025-09-20"
+      }
+    ]
+  },
+  {
+    "identificacion": 3,
+    "nombre": "Carlos López",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2025-09-17"
+      },
+      {
+        "codigo": "FAR013",
+        "fecha": "2025-09-19"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 4,
+    "nombre": "Ana Martínez",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2025-09-18"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR006",
+        "fecha": "2025-09-20"
+      },
+      {
+        "codigo": "CIR016",
+        "fecha": "2025-09-25"
+      }
+    ]
+  },
+  {
+    "identificacion": 5,
+    "nombre": "Pedro Sánchez",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-09-19"
+      },
+      {
+        "codigo": "FAR008",
+        "fecha": "2025-09-21"
+      },
+      {
+        "codigo": "FAR021",
+        "fecha": "2025-09-23"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR003",
+        "fecha": "2025-09-25"
+      }
+    ]
+  },
+  {
+    "identificacion": 6,
+    "nombre": "Laura González",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2025-09-20"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 7,
+    "nombre": "Miguel Pérez",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2025-09-21"
+      },
+      {
+        "codigo": "FAR017",
+        "fecha": "2025-09-23"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR007",
+        "fecha": "2025-09-25"
+      }
+    ]
+  },
+  {
+    "identificacion": 8,
+    "nombre": "Sofia Díaz",
+    "medicamentos": [
+      {
+        "codigo": "FAR016",
+        "fecha": "2025-09-22"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 9,
+    "nombre": "Roberto Ramírez",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2025-09-23"
+      },
+      {
+        "codigo": "FAR014",
+        "fecha": "2025-09-25"
+      },
+      {
+        "codigo": "FAR023",
+        "fecha": "2025-09-27"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 10,
+    "nombre": "Elena Torres",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-09-24"
+      },
+      {
+        "codigo": "FAR010",
+        "fecha": "2025-09-26"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR013",
+        "fecha": "2025-09-28"
+      }
+    ]
+  },
+  {
+    "identificacion": 11,
+    "nombre": "Andrés Vargas",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2025-10-01"
+      },
+      {
+        "codigo": "FAR026",
+        "fecha": "2025-10-03"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 12,
+    "nombre": "Daniela Castillo",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2025-10-02"
+      },
+      {
+        "codigo": "FAR018",
+        "fecha": "2025-10-04"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 13,
+    "nombre": "Fernando Moreno",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2025-10-03"
+      },
+      {
+        "codigo": "FAR011",
+        "fecha": "2025-10-05"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 14,
+    "nombre": "Valentina Jiménez",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2025-10-04"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 15,
+    "nombre": "Javier Acuña",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-10-05"
+      },
+      {
+        "codigo": "FAR008",
+        "fecha": "2025-10-07"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR003",
+        "fecha": "2025-10-09"
+      },
+      {
+        "codigo": "CIR004",
+        "fecha": "2025-10-12"
+      }
+    ]
+  },
+  {
+    "identificacion": 16,
+    "nombre": "Isabela Ruiz",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2025-10-06"
+      },
+      {
+        "codigo": "FAR012",
+        "fecha": "2025-10-08"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 17,
+    "nombre": "Ricardo Flores",
+    "medicamentos": [
+      {
+        "codigo": "FAR019",
+        "fecha": "2025-10-07"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR021",
+        "fecha": "2025-10-10"
+      }
+    ]
+  },
+  {
+    "identificacion": 18,
+    "nombre": "Mariana Herrera",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2025-10-08"
+      },
+      {
+        "codigo": "FAR016",
+        "fecha": "2025-10-10"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 19,
+    "nombre": "Sergio Reyes",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-10-09"
+      },
+      {
+        "codigo": "FAR024",
+        "fecha": "2025-10-11"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 20,
+    "nombre": "Patricia Navarro",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2025-10-10"
+      },
+      {
+        "codigo": "FAR006",
+        "fecha": "2025-10-12"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR009",
+        "fecha": "2025-10-14"
+      }
+    ]
+  },
+  {
+    "identificacion": 21,
+    "nombre": "David Quintero",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2025-10-15"
+      },
+      {
+        "codigo": "FAR014",
+        "fecha": "2025-10-17"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 22,
+    "nombre": "Claudia Soto",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2025-10-16"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR008",
+        "fecha": "2025-10-18"
+      }
+    ]
+  },
+  {
+    "identificacion": 23,
+    "nombre": "Gustavo Mendoza",
+    "medicamentos": [
+      {
+        "codigo": "FAR011",
+        "fecha": "2025-10-17"
+      },
+      {
+        "codigo": "FAR012",
+        "fecha": "2025-10-19"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 24,
+    "nombre": "Andrea Salazar",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2025-10-18"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 25,
+    "nombre": "Héctor Campos",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-10-19"
+      },
+      {
+        "codigo": "FAR008",
+        "fecha": "2025-10-21"
+      },
+      {
+        "codigo": "FAR021",
+        "fecha": "2025-10-23"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR005",
+        "fecha": "2025-10-25"
+      }
+    ]
+  },
+  {
+    "identificacion": 26,
+    "nombre": "Roxana Ríos",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2025-10-20"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 27,
+    "nombre": "Marcelo Blanco",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2025-11-01"
+      },
+      {
+        "codigo": "FAR017",
+        "fecha": "2025-11-03"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR020",
+        "fecha": "2025-11-05"
+      }
+    ]
+  },
+  {
+    "identificacion": 28,
+    "nombre": "Catalina Miranda",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2025-11-02"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 29,
+    "nombre": "Julio Ortiz",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-11-03"
+      },
+      {
+        "codigo": "FAR025",
+        "fecha": "2025-11-05"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 30,
+    "nombre": "Francisca Parra",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2025-11-04"
+      },
+      {
+        "codigo": "FAR016",
+        "fecha": "2025-11-06"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 31,
+    "nombre": "Esteban Medina",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2025-11-05"
+      },
+      {
+        "codigo": "FAR009",
+        "fecha": "2025-11-07"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR014",
+        "fecha": "2025-11-09"
+      }
+    ]
+  },
+  {
+    "identificacion": 32,
+    "nombre": "Viviana Contreras",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2025-11-06"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR006",
+        "fecha": "2025-11-08"
+      },
+      {
+        "codigo": "CIR017",
+        "fecha": "2025-11-11"
+      }
+    ]
+  },
+  {
+    "identificacion": 33,
+    "nombre": "Raúl Pacheco",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2025-11-07"
+      },
+      {
+        "codigo": "FAR012",
+        "fecha": "2025-11-09"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 34,
+    "nombre": "Maritza Fuentes",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2025-11-08"
+      },
+      {
+        "codigo": "FAR013",
+        "fecha": "2025-11-10"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 35,
+    "nombre": "Ignacio Duran",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-11-09"
+      },
+      {
+        "codigo": "FAR003",
+        "fecha": "2025-11-11"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR011",
+        "fecha": "2025-11-13"
+      }
+    ]
+  },
+  {
+    "identificacion": 36,
+    "nombre": "Graciela Vásquez",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2025-11-10"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 37,
+    "nombre": "Óscar Soria",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2025-12-01"
+      },
+      {
+        "codigo": "FAR019",
+        "fecha": "2025-12-03"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR023",
+        "fecha": "2025-12-05"
+      }
+    ]
+  },
+  {
+    "identificacion": 38,
+    "nombre": "Beatriz Araya",
+    "medicamentos": [
+      {
+        "codigo": "FAR016",
+        "fecha": "2025-12-02"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 39,
+    "nombre": "Ramón Leiva",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-12-03"
+      },
+      {
+        "codigo": "FAR008",
+        "fecha": "2025-12-05"
+      },
+      {
+        "codigo": "FAR010",
+        "fecha": "2025-12-07"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR003",
+        "fecha": "2025-12-09"
+      },
+      {
+        "codigo": "CIR010",
+        "fecha": "2025-12-12"
+      }
+    ]
+  },
+  {
+    "identificacion": 40,
+    "nombre": "Arlene Cruickshank",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2025-12-04"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 41,
+    "nombre": "Franco García",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-12-10"
+      },
+      {
+        "codigo": "FAR005",
+        "fecha": "2025-12-12"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR002",
+        "fecha": "2025-12-15"
+      }
+    ]
+  },
+  {
+    "identificacion": 42,
+    "nombre": "Camila López",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2025-12-11"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 43,
+    "nombre": "Diego Morales",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2025-12-13"
+      },
+      {
+        "codigo": "FAR004",
+        "fecha": "2025-12-15"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR008",
+        "fecha": "2025-12-18"
+      }
+    ]
+  },
+  {
+    "identificacion": 44,
+    "nombre": "Valeria Ruiz",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2025-12-14"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 45,
+    "nombre": "Tomás Fernández",
+    "medicamentos": [
+      {
+        "codigo": "FAR008",
+        "fecha": "2025-12-16"
+      },
+      {
+        "codigo": "FAR009",
+        "fecha": "2025-12-18"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR012",
+        "fecha": "2025-12-20"
+      }
+    ]
+  },
+  {
+    "identificacion": 46,
+    "nombre": "Lucía Gómez",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2025-12-17"
+      },
+      {
+        "codigo": "FAR010",
+        "fecha": "2025-12-19"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 47,
+    "nombre": "Mateo Iglesias",
+    "medicamentos": [
+      {
+        "codigo": "FAR011",
+        "fecha": "2025-12-20"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR015",
+        "fecha": "2025-12-22"
+      }
+    ]
+  },
+  {
+    "identificacion": 48,
+    "nombre": "Martina Jiménez",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2025-12-21"
+      },
+      {
+        "codigo": "FAR012",
+        "fecha": "2025-12-23"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 49,
+    "nombre": "Lucas Keegan",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2025-12-22"
+      },
+      {
+        "codigo": "FAR013",
+        "fecha": "2025-12-24"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR018",
+        "fecha": "2025-12-26"
+      }
+    ]
+  },
+  {
+    "identificacion": 50,
+    "nombre": "Natalia López",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2025-12-23"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 51,
+    "nombre": "Sebastián Márquez",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2026-01-05"
+      },
+      {
+        "codigo": "FAR006",
+        "fecha": "2026-01-07"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR001",
+        "fecha": "2026-01-10"
+      }
+    ]
+  },
+  {
+    "identificacion": 52,
+    "nombre": "Gabriela Navarro",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2026-01-06"
+      },
+      {
+        "codigo": "FAR014",
+        "fecha": "2026-01-08"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 53,
+    "nombre": "Rafael Ortega",
+    "medicamentos": [
+      {
+        "codigo": "FAR008",
+        "fecha": "2026-01-09"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR005",
+        "fecha": "2026-01-12"
+      }
+    ]
+  },
+  {
+    "identificacion": 54,
+    "nombre": "Elena Peña",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2026-01-10"
+      },
+      {
+        "codigo": "FAR015",
+        "fecha": "2026-01-12"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 55,
+    "nombre": "Andrés Quevedo",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2026-01-11"
+      },
+      {
+        "codigo": "FAR011",
+        "fecha": "2026-01-13"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR019",
+        "fecha": "2026-01-15"
+      }
+    ]
+  },
+  {
+    "identificacion": 56,
+    "nombre": "Belén Romero",
+    "medicamentos": [
+      {
+        "codigo": "FAR009",
+        "fecha": "2026-01-12"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 57,
+    "nombre": "Carlos Sáenz",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2026-01-14"
+      },
+      {
+        "codigo": "FAR016",
+        "fecha": "2026-01-16"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR022",
+        "fecha": "2026-01-18"
+      }
+    ]
+  },
+  {
+    "identificacion": 58,
+    "nombre": "Daniela Torres",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2026-01-15"
+      },
+      {
+        "codigo": "FAR010",
+        "fecha": "2026-01-17"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 59,
+    "nombre": "Esteban Urquiza",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2026-01-16"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR002",
+        "fecha": "2026-01-19"
+      }
+    ]
+  },
+  {
+    "identificacion": 60,
+    "nombre": "Fernanda Vargas",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2026-01-17"
+      },
+      {
+        "codigo": "FAR012",
+        "fecha": "2026-01-19"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 61,
+    "nombre": "Gonzalo Weiss",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2026-01-18"
+      },
+      {
+        "codigo": "FAR017",
+        "fecha": "2026-01-20"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR007",
+        "fecha": "2026-01-22"
+      }
+    ]
+  },
+  {
+    "identificacion": 62,
+    "nombre": "Hortensia Xerez",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2026-01-19"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 63,
+    "nombre": "Iván Yáñez",
+    "medicamentos": [
+      {
+        "codigo": "FAR008",
+        "fecha": "2026-01-20"
+      },
+      {
+        "codigo": "FAR018",
+        "fecha": "2026-01-22"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR010",
+        "fecha": "2026-01-24"
+      }
+    ]
+  },
+  {
+    "identificacion": 64,
+    "nombre": "Jacinta Zúñiga",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2026-01-21"
+      },
+      {
+        "codigo": "FAR011",
+        "fecha": "2026-01-23"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 65,
+    "nombre": "Javier Arenas",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2026-01-22"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR003",
+        "fecha": "2026-01-25"
+      }
+    ]
+  },
+  {
+    "identificacion": 66,
+    "nombre": "Josefina Blanco",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2026-01-23"
+      },
+      {
+        "codigo": "FAR019",
+        "fecha": "2026-01-25"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 67,
+    "nombre": "Julio Ceballos",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2026-01-24"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR004",
+        "fecha": "2026-01-27"
+      }
+    ]
+  },
+  {
+    "identificacion": 68,
+    "nombre": "Juanita Delgado",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2026-01-25"
+      },
+      {
+        "codigo": "FAR013",
+        "fecha": "2026-01-27"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 69,
+    "nombre": "Katiusca Espinosa",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2026-01-26"
+      },
+      {
+        "codigo": "FAR014",
+        "fecha": "2026-01-28"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR006",
+        "fecha": "2026-01-30"
+      }
+    ]
+  },
+  {
+    "identificacion": 70,
+    "nombre": "Karol Figueroa",
+    "medicamentos": [
+      {
+        "codigo": "FAR009",
+        "fecha": "2026-01-27"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 71,
+    "nombre": "Leonor Galván",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2026-02-05"
+      },
+      {
+        "codigo": "FAR015",
+        "fecha": "2026-02-07"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR009",
+        "fecha": "2026-02-10"
+      }
+    ]
+  },
+  {
+    "identificacion": 72,
+    "nombre": "León Henríquez",
+    "medicamentos": [
+      {
+        "codigo": "FAR005",
+        "fecha": "2026-02-06"
+      },
+      {
+        "codigo": "FAR020",
+        "fecha": "2026-02-08"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 73,
+    "nombre": "Lidia Ibáñez",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2026-02-07"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR011",
+        "fecha": "2026-02-10"
+      }
+    ]
+  },
+  {
+    "identificacion": 74,
+    "nombre": "Luis Jácome",
+    "medicamentos": [
+      {
+        "codigo": "FAR008",
+        "fecha": "2026-02-08"
+      },
+      {
+        "codigo": "FAR012",
+        "fecha": "2026-02-10"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 75,
+    "nombre": "Luz Kaplan",
+    "medicamentos": [
+      {
+        "codigo": "FAR004",
+        "fecha": "2026-02-09"
+      },
+      {
+        "codigo": "FAR016",
+        "fecha": "2026-02-11"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR012",
+        "fecha": "2026-02-13"
+      }
+    ]
+  },
+  {
+    "identificacion": 76,
+    "nombre": "Manuel Lopes",
+    "medicamentos": [
+      {
+        "codigo": "FAR002",
+        "fecha": "2026-02-10"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 77,
+    "nombre": "Margarita Moreno",
+    "medicamentos": [
+      {
+        "codigo": "FAR006",
+        "fecha": "2026-02-11"
+      },
+      {
+        "codigo": "FAR017",
+        "fecha": "2026-02-13"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR013",
+        "fecha": "2026-02-15"
+      }
+    ]
+  },
+  {
+    "identificacion": 78,
+    "nombre": "Mauro Nieto",
+    "medicamentos": [
+      {
+        "codigo": "FAR007",
+        "fecha": "2026-02-12"
+      },
+      {
+        "codigo": "FAR014",
+        "fecha": "2026-02-14"
+      }
+    ],
+    "cirugias": []
+  },
+  {
+    "identificacion": 79,
+    "nombre": "Melisa Ochoa",
+    "medicamentos": [
+      {
+        "codigo": "FAR001",
+        "fecha": "2026-02-13"
+      }
+    ],
+    "cirugias": [
+      {
+        "codigo": "CIR014",
+        "fecha": "2026-02-16"
+      }
+    ]
+  },
+  {
+    "identificacion": 80,
+    "nombre": "Mirna Pacheco",
+    "medicamentos": [
+      {
+        "codigo": "FAR003",
+        "fecha": "2026-02-14"
+      },
+      {
+        "codigo": "FAR018",
+        "fecha": "2026-02-16"
+      }
+    ],
+    "cirugias": []
+  }
+]

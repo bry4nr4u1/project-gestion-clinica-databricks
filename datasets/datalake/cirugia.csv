@@ -1,0 +1,26 @@
+codigo_cirugia,nombre_cirugia,especialidad,duracion_promedio_minutos,complejidad,costo_base,riesgo_nivel,estado
+CIR001,Apendicectomía,Cirugía General,45,Media,2500000,Bajo,Activa
+CIR002,Colecistectomía,Cirugía General,60,Media,3000000,Bajo,Activa
+CIR003,Bypass Coronario,Cirugía Cardiovascular,240,Alta,15000000,Alto,Activa
+CIR004,Angioplastía,Cardiología Intervencionista,90,Media,5000000,Medio,Activa
+CIR005,Prostatectomía,Urología,120,Alta,8000000,Medio,Activa
+CIR006,Histerectomía,Ginecología,90,Media,6000000,Medio,Activa
+CIR007,Artroscopia de Rodilla,Traumatología,45,Baja,3500000,Bajo,Activa
+CIR008,Reemplazo de Cadera,Traumatología,120,Alta,12000000,Medio,Activa
+CIR009,Cesaría,Ginecología y Obstetricia,60,Media,4500000,Bajo,Activa
+CIR010,Extirpación de Tumor de Mama,Oncología,150,Alta,10000000,Medio,Activa
+CIR011,Nefrectomía,Urología,180,Alta,11000000,Medio,Activa
+CIR012,Tiroidectomía,Cirugía General,90,Media,4800000,Bajo,Activa
+CIR013,Hernia Inguinal,Cirugía General,30,Baja,1800000,Bajo,Activa
+CIR014,Fistulectomía,Cirugía General,45,Media,2200000,Bajo,Activa
+CIR015,Vasectomía,Urología,20,Baja,1500000,Bajo,Activa
+CIR016,Ligadura de Trompas,Ginecología,25,Baja,1700000,Bajo,Activa
+CIR017,D&C (Legrado),Ginecología,20,Baja,1200000,Bajo,Activa
+CIR018,Histeroscopia,Ginecología,30,Baja,1400000,Bajo,Activa
+CIR019,Laparoscopia Diagnóstica,Cirugía General,40,Media,2800000,Bajo,Activa
+CIR020,Hernia Umbilical,Cirugía General,35,Baja,2000000,Bajo,Activa
+CIR021,Varices - Safenectomía,Cirugía Vascular,120,Media,5500000,Medio,Activa
+CIR022,Aneurisma de Aorta,Cirugía Vascular,300,Alta,18000000,Alto,Activa
+CIR023,Pólipectomía Endoscópica,Gastroenterología,30,Baja,2100000,Bajo,Activa
+CIR024,Hepatectomía Parcial,Cirugía General,240,Alta,14000000,Medio,Activa
+CIR025,Pancreatectomía,Cirugía General,300,Alta,16000000,Alto,Activa
