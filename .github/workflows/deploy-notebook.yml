@@ -188,7 +188,7 @@ jobs:
           "format": "MULTI_TASK",
           "tasks": [
             {
-              "task_key": "Eliminar-ambiente",
+              "task_key": "Eliminar-Ambiente",
               "description": "Ejecuta notebook -> eliminar-ambiente",
               "notebook_task": {
                 "notebook_path": "/prod/etl/eliminar-ambiente",
