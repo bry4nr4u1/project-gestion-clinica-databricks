@@ -1,0 +1,21 @@
+id_medico,nombre,apellido,especialidad,numero_licencia,hospital,ciudad,telefono,email,estado
+MED001,Carlos,Mendoza,Cardiología,LIC001,Hospital San Ignacio,Bogotá,3105551001,carlos.mendoza@hospital.com,Activo
+MED002,Patricia,González,Endocrinología,LIC002,Hospital San Ignacio,Bogotá,3105551002,patricia.gonzalez@hospital.com,Activo
+MED003,Roberto,López,Gastroenterología,LIC003,Hospital Metropolitano,Medellín,3105551003,roberto.lopez@hospital.com,Activo
+MED004,Alejandra,Rodríguez,Traumatología,LIC004,Hospital Metropolitano,Medellín,3105551004,alejandra.rodriguez@hospital.com,Activo
+MED005,Fernando,Martínez,Cardiología,LIC005,Clínica del Valle,Cali,3105551005,fernando.martinez@hospital.com,Activo
+MED006,Lorena,Pérez,Ginecología,LIC006,Clínica del Valle,Cali,3105551006,lorena.perez@hospital.com,Activo
+MED007,Marcos,Sánchez,Oncología,LIC007,Hospital Metropolitano,Medellín,3105551007,marcos.sanchez@hospital.com,Activo
+MED008,Daniela,García,Infectología,LIC008,Hospital San Ignacio,Bogotá,3105551008,daniela.garcia@hospital.com,Activo
+MED009,Sergio,Torres,Neurología,LIC009,Hospital Metropolitano,Medellín,3105551009,sergio.torres@hospital.com,Activo
+MED010,Vanessa,Díaz,Psiquiatría,LIC010,Clínica Psiquiátrica Central,Bogotá,3105551010,vanessa.diaz@hospital.com,Activo
+MED011,Miguel,Vargas,Urología,LIC011,Hospital San Ignacio,Bogotá,3105551011,miguel.vargas@hospital.com,Activo
+MED012,Catalina,Acuña,Cirugía General,LIC012,Hospital Metropolitano,Medellín,3105551012,catalina.acuna@hospital.com,Activo
+MED013,Javier,Flores,Oftalmología,LIC013,Clínica del Valle,Cali,3105551013,javier.flores@hospital.com,Activo
+MED014,Marisa,Moreno,Neumología,LIC014,Hospital San Ignacio,Bogotá,3105551014,marisa.moreno@hospital.com,Activo
+MED015,Andrés,Ramírez,Anestesiología,LIC015,Hospital Metropolitano,Medellín,3105551015,andres.ramirez@hospital.com,Activo
+MED016,Paula,Ruiz,Pediatría,LIC016,Hospital Metropolitano,Medellín,3105551016,paula.ruiz@hospital.com,Activo
+MED017,Gustavo,Blanco,Otorrinolaringología,LIC017,Hospital San Ignacio,Bogotá,3105551017,gustavo.blanco@hospital.com,Activo
+MED018,Isabel,Miranda,Dermatología,LIC018,Clínica del Valle,Cali,3105551018,isabel.miranda@hospital.com,Activo
+MED019,Leonardo,Herrera,Reumatología,LIC019,Hospital Metropolitano,Medellín,3105551019,leonardo.herrera@hospital.com,Activo
+MED020,Silvia,Navarro,Alergología,LIC020,Hospital San Ignacio,Bogotá,3105551020,silvia.navarro@hospital.com,Activo

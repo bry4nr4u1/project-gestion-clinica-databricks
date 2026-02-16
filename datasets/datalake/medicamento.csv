@@ -1,0 +1,31 @@
+codigo_medicamento,nombre_medicamento,principio_activo,dosis,unidad,especialidad,fabricante,precio_unitario,estado
+FAR001,Aspirina,Ácido Acetilsalicílico,500,mg,Cardiología,Bayer,2500,Activo
+FAR002,Metformina,Metformina,850,mg,Endocrinología,Merck,3000,Activo
+FAR003,Lisinopril,Lisinopril,10,mg,Cardiología,AstraZeneca,5500,Activo
+FAR004,Omeprazol,Omeprazol,20,mg,Gastroenterología,Novartis,4200,Activo
+FAR005,Ibuprofeno,Ibuprofeno,400,mg,Traumatología,Roche,2800,Activo
+FAR006,Amoxicilina,Amoxicilina,500,mg,Infectología,Glaxo,4500,Activo
+FAR007,Loratadina,Loratadina,10,mg,Alergología,GSK,3200,Activo
+FAR008,Atorvastatina,Atorvastatina,20,mg,Cardiología,Pfizer,6000,Activo
+FAR009,Insulina NPH,Insulina NPH,100,IU/ml,Endocrinología,Novo Nordisk,45000,Activo
+FAR010,Clopidogrel,Clopidogrel,75,mg,Cardiología,Bristol,7500,Activo
+FAR011,Fluoxetina,Fluoxetina,20,mg,Psiquiatría,Eli Lilly,4800,Activo
+FAR012,Sertraline,Sertraline,50,mg,Psiquiatría,Pfizer,5200,Activo
+FAR013,Ranitidina,Ranitidina,150,mg,Gastroenterología,GSK,2900,Activo
+FAR014,Furosemida,Furosemida,40,mg,Cardiología,Sanofi,3500,Activo
+FAR015,Nifedipino,Nifedipino,10,mg,Cardiología,Bayer,4200,Activo
+FAR016,Paracetamol,Paracetamol,500,mg,Analgesia,Johnson,2000,Activo
+FAR017,Diclofenaco,Diclofenaco,50,mg,Traumatología,Novartis,3100,Activo
+FAR018,Cefalexina,Cefalexina,500,mg,Infectología,Merck,3800,Activo
+FAR019,Ciprofloxacina,Ciprofloxacina,500,mg,Infectología,Bayer,5100,Activo
+FAR020,Dobutamina,Dobutamina,12.5,mg/ml,Cardiología,Mylan,12000,Activo
+FAR021,Metoprolol,Metoprolol,50,mg,Cardiología,AstraZeneca,4500,Activo
+FAR022,Amlodipino,Amlodipino,5,mg,Cardiología,Pfizer,5800,Activo
+FAR023,Enalapril,Enalapril,10,mg,Cardiología,Merck,4200,Activo
+FAR024,Losartán,Losartán,50,mg,Cardiología,Novartis,5500,Activo
+FAR025,Ácido Clavulánico,Ácido Clavulánico,125,mg,Infectología,GSK,6200,Activo
+FAR026,Gliclazida,Gliclazida,80,mg,Endocrinología,Servier,3900,Activo
+FAR027,Acarbosa,Acarbosa,50,mg,Endocrinología,Bayer,4100,Activo
+FAR028,Sitagliptina,Sitagliptina,100,mg,Endocrinología,Merck,8500,Activo
+FAR029,Levotiroxina,Levotiroxina,50,µg,Endocrinología,Merck,2200,Activo
+FAR030,Hidroclorotiazida,Hidroclorotiazida,25,mg,Cardiología,Novartis,2800,Activo
