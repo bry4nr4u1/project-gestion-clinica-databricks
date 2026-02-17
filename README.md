@@ -15,6 +15,7 @@ Repositorio de ETL para la gestión de datos clínicos en **Databricks**. Este p
 - [Flujo del ETL](#flujo-del-etl)
 - [Requisitos Previos](#requisitos-previos)
 - [Guía de Ejecución](#guía-de-ejecución)
+- [Workflow Automatizado (CI/CD)](#-workflow-automatizado-cicd)
 - [Descripción de Tablas](#descripción-de-tablas)
 - [Notas Técnicas](#notas-técnicas)
 - [Contacto](#contacto)
@@ -80,6 +81,14 @@ El proyecto integra datos de las siguientes fuentes:
 project-gestion-clinica-databricks/
 │
 ├── README.md                          # Este archivo
+│
+├── .github/                           # Configuración de CI/CD
+│   └── workflows/
+│       └── deploy-notebook.yml        # Workflow de despliegue automático
+│
+├── assets/                            # Recursos multimedia
+│   ├── diagrama_proyecto_etl_clinica_final.png
+│   └── ejecucion_wf_carga_datos_clinica.jpg
 │
 ├── datasets/                          # Datos de entrada
 │   ├── cosmosdb/
@@ -289,22 +298,183 @@ RESULTADO:
 3. Configurar notificaciones de estado
 4. Agendar ejecución según necesidad
 
-### Verificación
-
-Después de completar el ETL, verificar datos:
-
-```sql
--- Ver tablas bronze
-SELECT * FROM catalogo_clinica.bronze.paciente LIMIT 10;
-
--- Ver tablas silver (deben estar limpias)
-SELECT COUNT(*) FROM catalogo_clinica.silver.paciente;
-
--- Ver tablas gold (datos agregados)
-SELECT * FROM catalogo_clinica.gold.paciente_perfil_clinico LIMIT 5;
-```
-
 ---
+
+## 🔄 Workflow Automatizado (CI/CD)
+
+Este proyecto cuenta con un workflow automatizado de despliegue continuo mediante **GitHub Actions** que despliega y ejecuta el pipeline ETL completo en Databricks.
+
+### 📊 Workflow: `wf_carga_datos_clinica`
+
+El workflow está configurado para ejecutarse automáticamente al hacer push a la rama `main` y orquesta todas las tareas del ETL en secuencia.
+
+#### Configuración del Workflow
+
+| Propiedad | Valor |
+|-----------|-------|
+| **Nombre** | `wf_carga_datos_clinica` |
+| **Formato** | MULTI_TASK |
+| **Cluster** | `cluster_etl` (existente) |
+| **Timeout** | 7200 segundos (2 horas) |
+| **Max Concurrent Runs** | 1 |
+| **Schedule** | `0 0 8 * * ?` (8:00 AM diario) - PAUSED |
+| **Ubicación Notebooks** | `/prod/etl/` |
+
+#### Tareas del Workflow
+
+El workflow ejecuta las siguientes tareas en secuencia:
+
+**1. Eliminar-Ambiente**
+   - **Notebook**: `eliminar-ambiente.sql`
+   - **Descripción**: Limpia el ambiente previo
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `nombre_container`: "unit-catalog-clinica"
+     - `nombre_storage`: "adlsbrscceu2d01"
+     - `catalogo`: "catalogo_clinica"
+
+**2. Preparacion-Ambiente** ⬅️ *Depende de: Eliminar-Ambiente*
+   - **Notebook**: `preparacion-ambiente.sql`
+   - **Descripción**: Crea catálogo, esquemas y tablas
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `nombre_container`: "unit-catalog-clinica"
+     - `nombre_storage`: "adlsbrscceu2d01"
+     - `nombre_container_raw`: "raw"
+     - `nombre_storage_raw`: "dtlkbrscceu2d01"
+
+**3. Extracción de Datos (6 tareas en paralelo)** ⬅️ *Depende de: Preparacion-Ambiente*
+
+   **3.1. Extraer-data-cirugia**
+   - **Notebook**: `extraer-data-cirugia.py`
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `raw_datalake`: "dtlkbrscceu2d01"
+     - `raw_container`: "raw"
+     - `raw_file`: "cirugia.csv"
+     - `bronze_schema`: "bronze"
+     - `bronze_table`: "cirugia"
+
+   **3.2. Extraer-data-consultas-medicas**
+   - **Notebook**: `extraer-data-consultas-medicas.py`
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `raw_datalake`: "dtlkbrscceu2d01"
+     - `raw_container`: "raw"
+     - `raw_file`: "consultas_medicas.csv"
+     - `bronze_schema`: "bronze"
+     - `bronze_table`: "consultas_medicas"
+
+   **3.3. Extraer-data-medicamento**
+   - **Notebook**: `extraer-data-medicamento.py`
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `raw_datalake`: "dtlkbrscceu2d01"
+     - `raw_container`: "raw"
+     - `raw_file`: "medicamento.csv"
+     - `bronze_schema`: "bronze"
+     - `bronze_table`: "medicamento"
+
+   **3.4. Extraer-data-medico**
+   - **Notebook**: `extraer-data-medico.py`
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `raw_datalake`: "dtlkbrscceu2d01"
+     - `raw_container`: "raw"
+     - `raw_file`: "medico.csv"
+     - `bronze_schema`: "bronze"
+     - `bronze_table`: "medico"
+
+   **3.5. Extraer-data-paciente**
+   - **Notebook**: `extraer-data-paciente.py`
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `raw_datalake`: "dtlkbrscceu2d01"
+     - `raw_container`: "raw"
+     - `raw_file`: "paciente.csv"
+     - `bronze_schema`: "bronze"
+     - `bronze_table`: "paciente"
+
+   **3.6. Extraer-data-historial-pacientes**
+   - **Notebook**: `extraer-data-historial-pacientes.py`
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `cosmos_account`: "codbbrscceu2d01"
+     - `cosmos_scope`: "accessScopeforCosmosDB"
+     - `cosmos_secret`: "cosmosdbKey"
+     - `cosmos_database`: "clinica"
+     - `cosmos_container`: "raw"
+     - `bronze_schema`: "bronze"
+     - `bronze_table`: "historial_pacientes"
+
+**4. Transformar-datos-clinica** ⬅️ *Depende de: Todas las 6 tareas de extracción*
+   - **Notebook**: `transformar-data-clinica.py`
+   - **Descripción**: Transforma datos Bronze → Silver
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `bronze_schema`: "bronze"
+     - `bronze_pacientes`: "paciente"
+     - `bronze_medicos`: "medico"
+     - `bronze_medicamentos`: "medicamento"
+     - `bronze_cirugias`: "cirugia"
+     - `bronze_consultas_medicas`: "consultas_medicas"
+     - `bronze_historial_paciente`: "historial_pacientes"
+     - `silver_schema`: "silver"
+     - `silver_pacientes`: "paciente"
+     - `silver_medicos`: "medico"
+     - `silver_medicamentos`: "medicamento"
+     - `silver_cirugias`: "cirugia"
+     - `silver_consultas_medicas`: "consultas_medicas"
+     - `silver_historial_pacientes_medicamentos`: "historial_pacientes_medicamentos"
+     - `silver_historial_pacientes_cirugias`: "historial_pacientes_cirugias"
+
+**5. Cargar-datos-clinica** ⬅️ *Depende de: Transformar-datos-clinica*
+   - **Notebook**: `cargar-data-clinica.py`
+   - **Descripción**: Carga datos Silver → Gold
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Parámetros**:
+     - `catalogo`: "catalogo_clinica"
+     - `silver_schema`: "silver"
+     - `silver_hist_pac_med_table`: "historial_pacientes_medicamentos"
+     - `silver_hist_pac_cir_table`: "historial_pacientes_cirugias"
+     - `silver_paciente_table`: "paciente"
+     - `silver_medico_table`: "medico"
+     - `silver_consultas_medicas_table`: "consultas_medicas"
+     - `silver_medicamento_table`: "medicamento"
+     - `silver_cirugia_table`: "cirugia"
+     - `gold_schema`: "gold"
+     - `gold_pac_per_cli_table`: "paciente_perfil_clinico"
+     - `gold_consulta_por_medico_table`: "consulta_por_medico"
+     - `gold_ingreso_por_especialidad_table`: "ingresos_por_especialidad"
+     - `gold_medicamentos_consumo_table`: "medicamentos_consumo"
+
+#### Ejecución del Workflow
+
+![Ejecución Workflow - wf_carga_datos_clinica](assets/ejecucion_wf_carga_datos_clinica.jpg)
+
+#### Características del Deployment
+
+- ✅ **Despliegue automático** de notebooks al workspace de producción
+- ✅ **Validación de configuración** antes de ejecutar
+- ✅ **Monitoreo en tiempo real** del estado de ejecución
+- ✅ **Reutilización de cluster** existente para optimizar costos
+- ✅ **Notificaciones por email** en caso de fallo
+- ✅ **Tags de ambiente**: `environment:production`, `project:gestion-clinica`, `cluster_used:cluster_etl`
+
+#### Estado y Monitoreo
+
+El workflow puede ser monitoreado desde:
+- **GitHub Actions**: Ver logs de despliegue
+- **Databricks UI**: Ver ejecución del job y estado de tareas
+- **API Databricks**: Consultar estado programáticamente
 
 ## 📊 Descripción de Tablas
 
