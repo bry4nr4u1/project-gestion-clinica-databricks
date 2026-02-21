@@ -21,7 +21,6 @@ jobs:
         
         # Definir notebooks con sus extensiones (basado en su lenguaje)
         declare -A NOTEBOOKS=(
-          ["eliminar-ambiente"]="sql"
           ["preparacion-ambiente"]="sql"
           ["extraer-data-cirugia"]="py"
           ["extraer-data-consultas-medicas"]="py"
@@ -31,6 +30,7 @@ jobs:
           ["extraer-data-paciente"]="py"
           ["transformar-data-clinica"]="py"
           ["cargar-data-clinica"]="py"
+          ["gestion-permisos-clinica"]="sql" 
         )
         
         mkdir -p notebooks_to_deploy
@@ -188,22 +188,6 @@ jobs:
           "format": "MULTI_TASK",
           "tasks": [
             {
-              "task_key": "Eliminar-Ambiente",
-              "description": "Ejecuta notebook -> eliminar-ambiente",
-              "notebook_task": {
-                "notebook_path": "/prod/etl/eliminar-ambiente",
-                "source": "WORKSPACE",
-                "base_parameters": {
-                  "nombre_container": "unit-catalog-clinica",
-                  "nombre_storage": "adlsbrscceu2d01",
-                  "catalogo": "catalogo_clinica"
-                }                
-              },
-              "existing_cluster_id": "$CLUSTER_ID",
-              "timeout_seconds": 3600,
-              "max_retries": 2
-            },
-            {
               "task_key": "Preparacion-Ambiente",
               "description": "Ejecuta notebook -> preparacion-ambiente",
               "notebook_task": {
@@ -219,12 +203,7 @@ jobs:
               },
               "existing_cluster_id": "$CLUSTER_ID",
               "timeout_seconds": 3600,
-              "max_retries": 2,
-              "depends_on": [
-                {
-                  "task_key": "Eliminar-Ambiente"
-                }
-              ]              
+              "max_retries": 2            
             },
             {
               "task_key": "Extraer-data-cirugia",
@@ -452,7 +431,23 @@ jobs:
                   "task_key": "Transformar-datos-clinica"
                 }
               ]
-            }            
+            },
+            {
+              "task_key": "Gestion-Permisos-Clinica",
+              "description": "Ejecuta notebook -> gestion-permisos-clinica",
+              "notebook_task": {
+                "notebook_path": "/prod/etl/gestion-permisos-clinica",
+                "source": "WORKSPACE"              
+              },
+              "existing_cluster_id": "$CLUSTER_ID",
+              "timeout_seconds": 3600,
+              "max_retries": 2,
+              "depends_on": [
+                {
+                  "task_key": "Cargar-datos-clinica"
+                }
+              ]
+            } 
           ],
           "schedule": {
             "quartz_cron_expression": "0 0 8 * * ?",
