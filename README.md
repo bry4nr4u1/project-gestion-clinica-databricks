@@ -45,7 +45,7 @@ El proyecto está diseñado para:
 
 ## 🏗️ Arquitectura
 
-![Arquitectura Medallion - Gestión Clínica](assets/diagrama_proyecto_etl_clinica_final.png)
+![Arquitectura Medallion - Gestión Clínica](evidencias/img/arquitectura/diagrama_proyecto_etl_clinica_final.png)
 
 ---
 
@@ -86,9 +86,10 @@ project-gestion-clinica-databricks/
 │   └── workflows/
 │       └── deploy-notebook.yml        # Workflow de despliegue automático
 │
-├── assets/                            # Recursos multimedia
-│   ├── diagrama_proyecto_etl_clinica_final.png
-│   └── ejecucion_wf_carga_datos_clinica.jpg
+├── dashboard/                         # Dashboards y visualizaciones
+│   ├── evidencia/                     # Evidencias de dashboards
+│   └── source/
+│       └── Gestión Clínica - Análisis Completo.lvdash.json
 │
 ├── datasets/                          # Datos de entrada
 │   ├── cosmosdb/
@@ -99,6 +100,15 @@ project-gestion-clinica-databricks/
 │       ├── medicamento.csv
 │       ├── cirugia.csv
 │       └── consultas_medicas.csv
+│
+├── evidencias/                        # Documentación y evidencias
+│   ├── arquitectura-solucion/
+│   │   └── diagrama_proyecto_etl_clinica_final.drawio
+│   └── img/
+│       ├── arquitectura/
+│       │   └── diagrama_proyecto_etl_clinica_final.png
+│       ├── jobs/
+│       └── servicios/
 │
 ├── preparacion-ambiente/              # Configuración inicial
 │   └── preparacion-ambiente.sql       # Script de creación de catálogo y tablas
@@ -113,14 +123,20 @@ project-gestion-clinica-databricks/
 │   │   └── extraer-data-historial-pacientes.py
 │   │
 │   ├── 🔄 TRANSFORMACIÓN
-│   │   ├── transformar-data-clinica.py # Transformaciones Bronze → Silver
-│   │   └── Preparacion_Ambiente.sql    # Setup de ambiente
+│   │   ├── transformar-data-clinica.py     # Transformaciones Bronze → Silver
+│   │   └── preparacion-ambiente.sql        # Setup de ambiente
 │   │
-│   └── 📤 CARGA
-│       └── cargar-data-clinica.py     # Carga a capa Silver y Gold
+│   ├── 📤 CARGA
+│   │   └── cargar-data-clinica.py         # Carga a capa Silver y Gold
+│   │
+│   └── 🔐 SEGURIDAD
+│       └── gestion-permisos-clinica.sql   # Configuración de permisos
 │
-└── reversion/                         # Scripts de revertir cambios
-    └── eliminar-medallion.sql         # Elimina estructura completa
+├── reversion/                         # Scripts de reversión
+│   └── eliminar-ambiente.sql          # Elimina estructura completa
+│
+└── seguridad/                         # Configuración de permisos y acceso
+    └── gestion-permisos-clinica.sql   # Script de gestión de permisos
 ```
 
 ---
@@ -224,10 +240,17 @@ PASO 4: CARGA - GOLD (Agregación Analítica)
        ✓ Carga en tablas gold.*
        ✓ Genera vistas analíticas
 
+PASO 5: CONFIGURACIÓN DE SEGURIDAD
+   └─► Run: proceso/gestion-permisos-clinica.sql
+       ✓ Configura permisos por rol
+       ✓ Establece control de acceso granular
+       ✓ Habilita auditoría
+
 RESULTADO:
    ✅ Datos BI-Ready en capa Gold
    ✅ Trazabilidad completa
    ✅ Calidad garantizada
+   ✅ Seguridad configurada
 ```
 
 ---
@@ -292,9 +315,10 @@ RESULTADO:
 1. Crear **Job** con tareas secuenciales
 2. Agregar tareas en siguiente orden:
    - preparacion-ambiente.sql
-   - 6 notebooks de extracción
+   - 6 notebooks de extracción (en paralelo)
    - transformar-data-clinica.py
    - cargar-data-clinica.py
+   - gestion-permisos-clinica.sql
 3. Configurar notificaciones de estado
 4. Agendar ejecución según necesidad
 
@@ -324,16 +348,7 @@ El workflow está configurado para ejecutarse automáticamente al hacer push a l
 
 El workflow ejecuta las siguientes tareas en secuencia:
 
-**1. Eliminar-Ambiente**
-   - **Notebook**: `eliminar-ambiente.sql`
-   - **Descripción**: Limpia el ambiente previo
-   - **Timeout**: 3600s | **Retries**: 2
-   - **Parámetros**:
-     - `nombre_container`: "unit-catalog-clinica"
-     - `nombre_storage`: "adlsbrscceu2d01"
-     - `catalogo`: "catalogo_clinica"
-
-**2. Preparacion-Ambiente** ⬅️ *Depende de: Eliminar-Ambiente*
+**1. Preparacion-Ambiente**
    - **Notebook**: `preparacion-ambiente.sql`
    - **Descripción**: Crea catálogo, esquemas y tablas
    - **Timeout**: 3600s | **Retries**: 2
@@ -344,9 +359,9 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `nombre_container_raw`: "raw"
      - `nombre_storage_raw`: "dtlkbrscceu2d01"
 
-**3. Extracción de Datos (6 tareas en paralelo)** ⬅️ *Depende de: Preparacion-Ambiente*
+**2. Extracción de Datos (6 tareas en paralelo)** ⬅️ *Depende de: Preparacion-Ambiente*
 
-   **3.1. Extraer-data-cirugia**
+   **2.1. Extraer-data-cirugia**
    - **Notebook**: `extraer-data-cirugia.py`
    - **Timeout**: 3600s | **Retries**: 2
    - **Parámetros**:
@@ -357,7 +372,7 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `bronze_schema`: "bronze"
      - `bronze_table`: "cirugia"
 
-   **3.2. Extraer-data-consultas-medicas**
+   **2.2. Extraer-data-consultas-medicas**
    - **Notebook**: `extraer-data-consultas-medicas.py`
    - **Timeout**: 3600s | **Retries**: 2
    - **Parámetros**:
@@ -368,7 +383,7 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `bronze_schema`: "bronze"
      - `bronze_table`: "consultas_medicas"
 
-   **3.3. Extraer-data-medicamento**
+   **2.3. Extraer-data-medicamento**
    - **Notebook**: `extraer-data-medicamento.py`
    - **Timeout**: 3600s | **Retries**: 2
    - **Parámetros**:
@@ -379,7 +394,7 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `bronze_schema`: "bronze"
      - `bronze_table`: "medicamento"
 
-   **3.4. Extraer-data-medico**
+   **2.4. Extraer-data-medico**
    - **Notebook**: `extraer-data-medico.py`
    - **Timeout**: 3600s | **Retries**: 2
    - **Parámetros**:
@@ -390,7 +405,7 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `bronze_schema`: "bronze"
      - `bronze_table`: "medico"
 
-   **3.5. Extraer-data-paciente**
+   **2.5. Extraer-data-paciente**
    - **Notebook**: `extraer-data-paciente.py`
    - **Timeout**: 3600s | **Retries**: 2
    - **Parámetros**:
@@ -401,7 +416,7 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `bronze_schema`: "bronze"
      - `bronze_table`: "paciente"
 
-   **3.6. Extraer-data-historial-pacientes**
+   **2.6. Extraer-data-historial-pacientes**
    - **Notebook**: `extraer-data-historial-pacientes.py`
    - **Timeout**: 3600s | **Retries**: 2
    - **Parámetros**:
@@ -414,7 +429,7 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `bronze_schema`: "bronze"
      - `bronze_table`: "historial_pacientes"
 
-**4. Transformar-datos-clinica** ⬅️ *Depende de: Todas las 6 tareas de extracción*
+**3. Transformar-datos-clinica** ⬅️ *Depende de: Todas las 6 tareas de extracción*
    - **Notebook**: `transformar-data-clinica.py`
    - **Descripción**: Transforma datos Bronze → Silver
    - **Timeout**: 3600s | **Retries**: 2
@@ -436,7 +451,7 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `silver_historial_pacientes_medicamentos`: "historial_pacientes_medicamentos"
      - `silver_historial_pacientes_cirugias`: "historial_pacientes_cirugias"
 
-**5. Cargar-datos-clinica** ⬅️ *Depende de: Transformar-datos-clinica*
+**4. Cargar-datos-clinica** ⬅️ *Depende de: Transformar-datos-clinica*
    - **Notebook**: `cargar-data-clinica.py`
    - **Descripción**: Carga datos Silver → Gold
    - **Timeout**: 3600s | **Retries**: 2
@@ -456,9 +471,15 @@ El workflow ejecuta las siguientes tareas en secuencia:
      - `gold_ingreso_por_especialidad_table`: "ingresos_por_especialidad"
      - `gold_medicamentos_consumo_table`: "medicamentos_consumo"
 
+**5. Gestion-Permisos-Clinica** ⬅️ *Depende de: Cargar-datos-clinica*
+   - **Notebook**: `gestion-permisos-clinica.sql`
+   - **Descripción**: Configura permisos y control de acceso
+   - **Timeout**: 3600s | **Retries**: 2
+   - **Sin parámetros adicionales** (utiliza valores predeterminados)
+
 #### Ejecución del Workflow
 
-![Ejecución Workflow - wf_carga_datos_clinica](assets/ejecucion_wf_carga_datos_clinica.jpg)
+Puede visualizarse en **Databricks Workflows UI** → `wf_carga_datos_clinica` para monitorear en tiempo real ejecución de todas las tareas.
 
 #### Características del Deployment
 
@@ -553,7 +574,45 @@ Columnas:
 
 ---
 
-## 🔧 Notas Técnicas
+## � Dashboard de Análisis
+
+### Visualización de Datos
+Este proyecto incluye un dashboard completo en Databricks para análisis interactivo de datos clínicos.
+
+**Ubicación**: `dashboard/source/Gestión Clínica - Análisis Completo.lvdash.json`
+
+**Características**:
+- 📈 Visualizaciones de métricas clave de la clínica
+- 🔍 Filtros interactivos por especialidad, período y médico
+- 📊 Análisis de ocupación y productividad
+- 💊 Monitoreo de inventario de medicamentos
+- 👥 Gestión y seguimiento de pacientes
+
+**Cómo usar**:
+1. Abrir Databricks Workspace
+2. Importar el archivo JSON desde `dashboard/source/`
+3. Conectar a la capa Gold del catálogo `catalogo_clinica`
+4. Ejecutar consultas interactivas
+
+---
+
+## 🔐 Gestión de Seguridad y Permisos
+
+El proyecto incluye scripts de configuración de permisos para control de acceso granular:
+
+**Scripts disponibles**:
+- `seguridad/gestion-permisos-clinica.sql` - Configuración de permisos por rol
+- `proceso/gestion-permisos-clinica.sql` - Script replicado para facilitar ejecución en workflow
+
+**Niveles de acceso**:
+- 👨‍⚕️ **Médicos**: Acceso a datos de pacientes y consultas
+- 🏥 **Administradores**: Acceso completo a todas las tablas
+- 📊 **Analistas**: Acceso únicamente a capa Gold (reportes)
+- 🔐 **Auditoría**: Acceso a tablas de historial y trazabilidad
+
+---
+
+## �🔧 Notas Técnicas
 
 ### **Librerías Utilizadas**
 
@@ -601,9 +660,16 @@ En caso de necesidad, ejecutar scripts de limpieza:
 
 ### Eliminar Estructura Completa
 ```sql
-Run: reversion/eliminar-medallion.sql
+Run: reversion/eliminar-ambiente.sql
 -- Elimina catálogo y todas las tablas
 -- Regresa a estado inicial
+-- ⚠️ ADVERTENCIA: Esta operación es irreversible
+```
+
+### Restaurar Permisos por Defecto
+```sql
+Run: seguridad/gestion-permisos-clinica.sql
+-- Restaura configuración de permisos al estado inicial
 ```
 
 ---

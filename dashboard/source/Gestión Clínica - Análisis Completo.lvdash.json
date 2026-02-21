@@ -1,0 +1,530 @@
+{
+  "datasets": [
+    {
+      "name": "a750c51b",
+      "displayName": "Pacientes_Etaria",
+      "queryLines": [
+        "SELECT \r\n",
+        "  CASE \r\n",
+        "    WHEN YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento) < 18 THEN '0-18'\r\n",
+        "    WHEN YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento) BETWEEN 19 AND 30 THEN '19-30'\r\n",
+        "    WHEN YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento) BETWEEN 31 AND 45 THEN '31-45'\r\n",
+        "    WHEN YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento) BETWEEN 46 AND 60 THEN '46-60'\r\n",
+        "    WHEN YEAR(CURRENT_DATE()) - YEAR(fecha_nacimiento) BETWEEN 61 AND 75 THEN '61-75'\r\n",
+        "    ELSE '75+'\r\n",
+        "  END as grupo_edad,\r\n",
+        "  COUNT(DISTINCT identificacion) as total_pacientes\r\n",
+        "FROM catalogo_clinica.gold.paciente_perfil_clinico\r\n",
+        "WHERE fecha_carga = (SELECT MAX(fecha_carga) FROM catalogo_clinica.gold.paciente_perfil_clinico)\r\n",
+        "GROUP BY grupo_edad\r\n",
+        "ORDER BY \r\n",
+        "  CASE grupo_edad\r\n",
+        "    WHEN '0-18' THEN 1\r\n",
+        "    WHEN '19-30' THEN 2\r\n",
+        "    WHEN '31-45' THEN 3\r\n",
+        "    WHEN '46-60' THEN 4\r\n",
+        "    WHEN '61-75' THEN 5\r\n",
+        "    ELSE 6\r\n",
+        "  END"
+      ]
+    },
+    {
+      "name": "9d133d6d",
+      "displayName": "Consultas por Especialidad",
+      "queryLines": [
+        "SELECT \r\n",
+        "  especialidad,\r\n",
+        "  total_consultas,\r\n",
+        "  total_ingresos,\r\n",
+        "  pacientes_unicos,\r\n",
+        "  ROUND(total_ingresos / total_consultas, 2) as ingreso_por_consulta\r\n",
+        "FROM catalogo_clinica.gold.consulta_por_medico\r\n",
+        "WHERE fecha_carga = (SELECT MAX(fecha_carga) FROM catalogo_clinica.gold.consulta_por_medico)\r\n",
+        "ORDER BY total_consultas DESC\r\n",
+        "LIMIT 10"
+      ]
+    },
+    {
+      "name": "6584cba4",
+      "displayName": "Ingresos Temporales por Especialidad",
+      "queryLines": [
+        "SELECT \r\n",
+        "  CAST(fecha_carga AS DATE) as fecha_reporte,\r\n",
+        "  especialidad,\r\n",
+        "  total_consultas,\r\n",
+        "  costo_total_consultas as ingresos_mensuales,\r\n",
+        "  costo_promedio_consulta,\r\n",
+        "  pacientes_unicos,\r\n",
+        "  medicos_participantes\r\n",
+        "FROM catalogo_clinica.gold.ingresos_por_especialidad\r\n",
+        "ORDER BY fecha_reporte DESC, costo_total_consultas DESC"
+      ]
+    },
+    {
+      "name": "c380e29d",
+      "displayName": "Medicamentos - Stock/Consumo",
+      "queryLines": [
+        "SELECT \r\n",
+        "  nombre_medicamento,\r\n",
+        "  especialidad,\r\n",
+        "  total_unidades_consumidas as consumo_total,\r\n",
+        "  total_pacientes as pacientes_tratados,\r\n",
+        "  costo_unitario,\r\n",
+        "  costo_total as valor_consumido,\r\n",
+        "  fabricante,\r\n",
+        "  CASE \r\n",
+        "    WHEN total_unidades_consumidas < 100 THEN 'BAJO'\r\n",
+        "    WHEN total_unidades_consumidas BETWEEN 100 AND 500 THEN 'MEDIO'\r\n",
+        "    ELSE 'ALTO'\r\n",
+        "  END as nivel_consumo,\r\n",
+        "  fecha_carga\r\n",
+        "FROM catalogo_clinica.gold.medicamentos_consumo\r\n",
+        "ORDER BY total_unidades_consumidas DESC"
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "f782e666",
+      "displayName": "Graficos clinica",
+      "layout": [
+        {
+          "widget": {
+            "name": "distribucion-pacientes-grupo-edad",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "a750c51b",
+                  "fields": [
+                    {
+                      "name": "grupo_edad",
+                      "expression": "`grupo_edad`"
+                    },
+                    {
+                      "name": "sum(total_pacientes)",
+                      "expression": "SUM(`total_pacientes`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Distribución de Pacientes por Grupo de Edad",
+                "showDescription": false,
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "colors": [
+                  "#2F80FF",
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "grupo_edad",
+                  "displayName": "Grupo por Edad",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "custom-order",
+                      "orderedValues": [
+                        "19-30",
+                        "31-45",
+                        "46-60",
+                        "61-75"
+                      ]
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_pacientes)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Total de pacientes",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "consultas-por-especialidad",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "9d133d6d",
+                  "fields": [
+                    {
+                      "name": "sum(total_consultas)",
+                      "expression": "SUM(`total_consultas`)"
+                    },
+                    {
+                      "name": "especialidad",
+                      "expression": "`especialidad`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Consultas por Especialidad",
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(total_consultas)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  },
+                  "displayName": "Total de consultas",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "especialidad",
+                  "displayName": "Especialidad",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "ingresos-temporal",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "6584cba4",
+                  "fields": [
+                    {
+                      "name": "daily(fecha_reporte)",
+                      "expression": "DATE_TRUNC(\"DAY\", `fecha_reporte`)"
+                    },
+                    {
+                      "name": "sum(ingresos_mensuales)",
+                      "expression": "SUM(`ingresos_mensuales`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Ingresos por Fecha",
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "daily(fecha_reporte)",
+                  "displayName": "Fecha",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(ingresos_mensuales)",
+                  "displayName": "Ingresos Mensuales",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "consumo-de-medicamentos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "c380e29d",
+                  "fields": [
+                    {
+                      "name": "sum(consumo_total)",
+                      "expression": "SUM(`consumo_total`)"
+                    },
+                    {
+                      "name": "nombre_medicamento",
+                      "expression": "`nombre_medicamento`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Consumo de Medicamentos",
+                "headerAlignment": "center"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(consumo_total)",
+                  "displayName": "Consumo total",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "nombre_medicamento",
+                  "displayName": "Medicamento",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
