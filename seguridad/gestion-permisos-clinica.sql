@@ -2,71 +2,12 @@
 -- MAGIC %md
 -- MAGIC # Gestión de Permisos - Sistema Clínico
 -- MAGIC 
--- MAGIC Este notebook administra permisos y grupos de usuarios para el proyecto de gestión clínica.
+-- MAGIC Este notebook administra permisos para el proyecto de gestión clínica.
 
 -- COMMAND ----------
 
 -- MAGIC %md
--- MAGIC ## 1. Creación de Grupos de Usuarios
-
--- COMMAND ----------
-
--- Crear grupo de custodios técnicos
-CREATE GROUP IF NOT EXISTS `custodios_tecnicos`;
-
--- COMMAND ----------
-
--- Crear grupo de modeladores de datos
-CREATE GROUP IF NOT EXISTS `data_modeler`;
-
--- COMMAND ----------
-
--- Crear grupo de ingenieros de datos
-CREATE GROUP IF NOT EXISTS `data_engineer`;
-
--- COMMAND ----------
-
--- Crear grupo de QA
-CREATE GROUP IF NOT EXISTS `qa`;
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## 2. Asignación de Usuarios a Grupos
-
--- COMMAND ----------
-
--- Asignar usuarios al grupo custodios_tecnicos
-ALTER GROUP `custodios_tecnicos`
-ADD USER `cursosestudiosbrscc@outlook.com`;
-
--- COMMAND ----------
-
--- Asignar usuarios al grupo data_modeler
-ALTER GROUP `data_modeler`
-ADD USER `cursosestudiosbrscc02@outlook.com`;
-
--- COMMAND ----------
-
--- Asignar usuarios al grupo data_engineer
-ALTER GROUP `data_engineer`
-ADD USER `cursosestudiosbrscc03@outlook.com`;
-
--- COMMAND ----------
-
--- Asignar usuarios al grupo qa
-ALTER GROUP `qa`
-ADD USER `cursosestudiosbrscc04@outlook.com`;
-
--- COMMAND ----------
-
--- Verificar usuarios del sistema
-SHOW USERS;
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## 3. Permisos en Catálogo
+-- MAGIC ## 1. Permisos en Catálogo
 
 -- COMMAND ----------
 
@@ -92,7 +33,7 @@ GRANT USE CATALOG ON CATALOG catalogo_clinica TO `qa`;
 -- COMMAND ----------
 
 -- MAGIC %md
--- MAGIC ## 4. Permisos en Schemas (Bronze, Silver, Gold)
+-- MAGIC ## 2. Permisos en Schemas (Bronze, Silver, Gold)
 
 -- COMMAND ----------
 
@@ -176,7 +117,7 @@ GRANT USE SCHEMA ON SCHEMA catalogo_clinica.gold TO `qa`;
 -- COMMAND ----------
 
 -- MAGIC %md
--- MAGIC ## 5. Permisos en Tablas Específicas
+-- MAGIC ## 3. Permisos en Tablas Específicas
 
 -- COMMAND ----------
 
@@ -239,12 +180,7 @@ GRANT SELECT ON SCHEMA catalogo_clinica.gold TO `qa`;
 -- COMMAND ----------
 
 -- MAGIC %md
--- MAGIC ## 6. Permisos en External Locations
-
--- COMMAND ----------
-
--- Listar ubicaciones externas disponibles
-SHOW EXTERNAL LOCATIONS;
+-- MAGIC ## 4. Permisos en External Locations
 
 -- COMMAND ----------
 
@@ -264,48 +200,3 @@ GRANT WRITE FILES ON EXTERNAL LOCATION `exlt-unit-catalog-clinica` TO `data_engi
 
 -- Data Modelers: Solo necesitan READ del catálogo para análisis
 GRANT READ FILES ON EXTERNAL LOCATION `exlt-unit-catalog-clinica` TO `data_modeler`;
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC ## 7. Verificación de Permisos (SHOW GRANTS)
-
--- COMMAND ----------
-
--- Ver permisos en el catálogo
-SHOW GRANTS ON CATALOG catalogo_clinica;
-
--- COMMAND ----------
-
--- Ver permisos en schemas
-SHOW GRANTS ON SCHEMA catalogo_clinica.bronze;
-
--- COMMAND ----------
-
-SHOW GRANTS ON SCHEMA catalogo_clinica.silver;
-
--- COMMAND ----------
-
-SHOW GRANTS ON SCHEMA catalogo_clinica.gold;
-
--- COMMAND ----------
-
--- Ver permisos en tablas específicas
-SHOW GRANTS ON TABLE catalogo_clinica.bronze.paciente;
-
--- COMMAND ----------
-
-SHOW GRANTS ON TABLE catalogo_clinica.silver.paciente;
-
--- COMMAND ----------
-
-SHOW GRANTS ON TABLE catalogo_clinica.gold.paciente_perfil_clinico;
-
--- COMMAND ----------
-
--- Ver permisos en external locations
-SHOW GRANTS ON EXTERNAL LOCATION `exlt-raw-datalake`;
-
--- COMMAND ----------
-
-SHOW GRANTS ON EXTERNAL LOCATION `exlt-unit-catalog-clinica`;
